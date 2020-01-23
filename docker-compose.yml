@@ -1,0 +1,20 @@
+version: '3.7'
+services:
+# Database Service (Mysql)
+  db:
+    image: mysql:5.7
+    ports:
+      - "3306:3306"
+    restart: always
+    environment:
+      MYSQL_DATABASE: lojavirtual
+      MYSQL_USER: luiz
+      MYSQL_PASSWORD: 123456789
+      MYSQL_ROOT_HOST: '%'
+    volumes:
+      - db-data:/var/lib/mysql 
+
+# Volumes
+volumes:
+  db-data:
+
