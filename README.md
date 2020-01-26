@@ -31,21 +31,21 @@ docker-compose up
 O front-end será executado na porta ? (http://localhost:3000) e o back-end será executado na porta 8080 (http://localhost:8080).
 
 ### Execução Local
-pre-requisito
-    Criar um database chamada [ lojavirtual ]
+##### pre-requisito
+    Criar um database chamada  (lojavirtual)
     Para o spring acessar a base segue o user e pass necessario.
-        spring.datasource.username=luiz
-        spring.datasource.password=123456789
-    Endereço de acesso esperada para a base de dado [localhost:3306]
+        (spring.datasource.username=luiz).
+        (spring.datasource.password=123456789).
+    Endereço de acesso esperada para a base de dado (localhost:3306)
 
-Front-end
+#### Front-end
 Na pasta front, digite:
 
 npm install
 
 npm run start
 
-O front-end será executado em [http://localhost:9000].
+O front-end será executado em (http://localhost:9000).
 
 #### Back-end
 Na pasta back, digite:
