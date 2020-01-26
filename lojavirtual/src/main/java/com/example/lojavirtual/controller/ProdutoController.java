@@ -98,4 +98,19 @@ public class ProdutoController {
 
         return ResponseEntity.ok(new Response<String>("Sucesses", null));
     }
+
+    @GetMapping("findProdutoById/{idProduto}")
+    public ResponseEntity<Response<ProdutoDto>> findProdutoById(@PathVariable("idProduto") Long idProduto){
+
+        List<String> list = new ArrayList<String>();
+
+        Produto produto = this.produtoService.findById(idProduto);
+
+        if (produto == null){
+            list.add("Produto não existe!!!");
+            return ResponseEntity.badRequest().body(new Response<ProdutoDto>(null, list));
+        }
+
+        return ResponseEntity.ok(new Response<ProdutoDto>(new ProdutoDto().convertProdutoParaDto(produto), null));
+    }
 }

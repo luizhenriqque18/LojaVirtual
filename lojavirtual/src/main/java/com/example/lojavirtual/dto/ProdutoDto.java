@@ -12,7 +12,6 @@ import java.util.stream.Collectors;
 
 public class ProdutoDto {
 
-    @JsonIgnore
     private Long id;
 
     @NotBlank(message = "Descrição não poder ser vazio")

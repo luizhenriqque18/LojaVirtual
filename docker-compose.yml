@@ -1,20 +1,28 @@
 version: '3.7'
 services:
 # Database Service (Mysql)
-  db:
-    image: mysql:5.7
-    ports:
-      - "3306:3306"
-    restart: always
+  icts-mysql:
+    container_name: icts-mysql
+    image: mysql/mysql-server:5.7
     environment:
       MYSQL_DATABASE: lojavirtual
       MYSQL_USER: luiz
       MYSQL_PASSWORD: 123456789
       MYSQL_ROOT_HOST: '%'
-    volumes:
-      - db-data:/var/lib/mysql 
+    ports:
+      - "3306:3306"
+    restart: always
 
-# Volumes
-volumes:
-  db-data:
+  backend:
+    restart: always
+    build: ./lojavirtual
+    working_dir: /lojavirtual
+    volumes:
+      - ./lojavirtual:/lojavirtual
+      - ~/.m2:/root/.m2
+    expose:
+      - "8080"
+    command: mvn clean spring-boot:run -Dspring-boot.run.profiles=prod
+    depends_on:
+      - icts-mysql
 
