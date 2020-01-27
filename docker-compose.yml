@@ -14,15 +14,22 @@ services:
     restart: always
 
   backend:
-    restart: always
-    build: ./lojavirtual
-    working_dir: /lojavirtual
+    image: 'maven:3-jdk-8-alpine'
     volumes:
-      - ./lojavirtual:/lojavirtual
-      - ~/.m2:/root/.m2
-    expose:
-      - "8080"
+     - ./lojavirtual:/app/
     command: mvn clean spring-boot:run -Dspring-boot.run.profiles=prod
+    working_dir: /app
+    ports:
+     - 8080:8080
     depends_on:
-      - icts-mysql
+     - icts-mysql
+
+  frontend:
+    image: 'node:lts-alpine'
+    volumes:
+     - ./lojavirtual_web:/app/
+    command: sh -c "(npm i && npm run build) && node server.js"
+    working_dir: /app
+    ports:
+     - 3000:3000
 
