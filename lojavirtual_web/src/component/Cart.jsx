@@ -14,7 +14,6 @@ function Cart(props) {
        await api.delete(`delete/${props.data.id}`)
            .then(resp => {
                props.loaderCart();
-               console.log(this.props);
            }).catch(e => console.log(e))
    }
 

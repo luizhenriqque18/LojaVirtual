@@ -69,7 +69,7 @@ class List extends React.Component{
                         </CardColumns>
                     </Col>
                 </Row>
-                <ProdutoModal modo={this.conso} show={this.state.isOpen} onHide={()=> this.setState({ isOpen: false })} editar={this.state.edita}/>
+                <ProdutoModal modo={this.conso} show={this.state.isOpen} onExiting={(e)=> loader()} onHide={()=> this.setState({ isOpen: false })} editar={this.state.edita}/>
             </Container>
         )
     }

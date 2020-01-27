@@ -34,6 +34,7 @@ function ProdutoModal(props) {
     }
 
     async function handleSubmit() {
+        props.modo()
         if(validated){
             if(modo === 'Editar'){
                 await api.put(`update/?idProduto=${produto.id}`, produto)
